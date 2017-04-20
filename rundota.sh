@@ -32,13 +32,10 @@ FLAGS="${FLAGS} +cl_showfps 2"
 FLAGS="${FLAGS} +timedemo 2203598540 +timedemo_start 80000 +timedemo_end 85000 -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinised; quit\""
 
 # Start dota2 and set it to kill on shell exit
-"${DOTA2_BIN}" ${FLAGS} -gl
-"${DOTA2_BIN}" ${FLAGS} -gl
-"${DOTA2_BIN}" ${FLAGS} -vulkan
-"${DOTA2_BIN}" ${FLAGS} -vulkan
-
-# Print the 
-echo -n 'OpenGL: '
-tail -3 "${DOTA2_BENCH_CSV}" | cut -d, -f3 | head -1
-echo -n 'Vulkan: '
-tail -1 "${DOTA2_BENCH_CSV}" | cut -d, -f3
+for api in "gl vulkan"; do
+    for _ in `seq 1 5`; do
+        "${DOTA2_BIN}" ${FLAGS} "-${api}"
+        echo -n "${api}: "
+        tail -1 "${DOATA2_BENCH_CSV}" | awk '{print $2}' | tr -d ','
+    done
+done
