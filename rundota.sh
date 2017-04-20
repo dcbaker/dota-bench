@@ -3,6 +3,7 @@
 DOTA2_DIR="${HOME}/.steam/steam/steamapps/common/dota 2 beta"
 DOTA2_BIN="${DOTA2_DIR}/game/bin/linuxsteamrt64/dota2"
 DOTA2_BENCH_CSV="${DOTA2_DIR}/game/dota/Source2Bench.csv"
+DOTA2_TRACE_FILE=2203598540
 
 # These are set in the shell script used to launch dota2 on Linux. Since that
 # also messes with LD_LIBRARY_PATH and LD_PRELOAD we don't call that, but we
@@ -29,7 +30,7 @@ FLAGS="${FLAGS} -fs -w 1920 -h 1080"
 FLAGS="${FLAGS} +cl_showfps 2"
 
 # Run the time demo and quit as soon as finished
-FLAGS="${FLAGS} +timedemo 2203598540 +timedemo_start 80000 +timedemo_end 85000 -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinised; quit\""
+FLAGS="${FLAGS} +timedemo ${DOTA2_TRACE_FILE} +timedemo_start 80000 +timedemo_end 85000 -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinised; quit\""
 
 # Make it work with APITrace
 #FLAGS="${FLAGS} -gl_disable_buffer_storage"
