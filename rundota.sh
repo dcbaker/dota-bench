@@ -31,6 +31,9 @@ FLAGS="${FLAGS} +cl_showfps 2"
 # Run the time demo and quit as soon as finished
 FLAGS="${FLAGS} +timedemo 2203598540 +timedemo_start 80000 +timedemo_end 85000 -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinised; quit\""
 
+# Make it work with APITrace
+#FLAGS="${FLAGS} -gl_disable_buffer_storage"
+
 # Start dota2 and set it to kill on shell exit
 for api in "gl vulkan"; do
     for _ in `seq 1 5`; do
