@@ -30,7 +30,7 @@ FLAGS="${FLAGS} -fs -w 1920 -h 1080"
 FLAGS="${FLAGS} +cl_showfps 2"
 
 # Run the time demo and quit as soon as finished
-FLAGS="${FLAGS} +timedemo ${DOTA2_TRACE_FILE} +timedemo_start 80000 +timedemo_end 85000 -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinised; quit\""
+FLAGS="${FLAGS} +timedemo ${DOTA2_TRACE_FILE} +timedemo_start 80000 +timedemo_end 85000 -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinished; quit\""
 
 # Make it work with APITrace
 #FLAGS="${FLAGS} -gl_disable_buffer_storage"
