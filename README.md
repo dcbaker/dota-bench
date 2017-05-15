@@ -19,10 +19,16 @@ I'm unfamiliar with how to get the same results from windows as from Linux, ther
 
 ### Linux
 
+#### Ubuntu
+
 This assumes that you're using ubuntu 16.10. Ubuntu is quirky compared to other Linux distributions in many ways, so it may be easier or more difficult to get this working on a different distribution.
 
-Copy the .dem file to "~/.steam/steam/steamapps/common/dota 2 beta/game/dota/"
+Copy the .dem files to "~/.steam/steam/steamapps/common/dota 2 beta/game/dota/"
 
 run ./rundota.sh
 
 The Linux shell script will print the second run of each API to the console automatically.
+
+#### Other Linux OSes
+
+Other OSes put the steam directory in "~/.local/share/Steam/steamapps/common/dota 2 beta/game/dota/"
