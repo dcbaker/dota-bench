@@ -1,9 +1,11 @@
-# This is for non-ubuntu distros, that put steam in the right place
+# This is for non-debian distros, that put steam in the right place
 #DOTA2_DIR="${HOME}/.local/share/Steam/steamapps/common/dota 2 beta"
 DOTA2_DIR="${HOME}/.steam/steam/steamapps/common/dota 2 beta"
 DOTA2_BIN="${DOTA2_DIR}/game/bin/linuxsteamrt64/dota2"
 DOTA2_BENCH_CSV="${DOTA2_DIR}/game/dota/Source2Bench.csv"
-DOTA2_TRACE_FILE=2203598540
+if [ -z "$TRACE" ]; then
+    TRACE='valve'
+fi
 
 # These are set in the shell script used to launch dota2 on Linux. Since that
 # also messes with LD_LIBRARY_PATH and LD_PRELOAD we don't call that, but we
@@ -30,7 +32,13 @@ FLAGS="${FLAGS} -fs -w 1920 -h 1080"
 FLAGS="${FLAGS} +cl_showfps 2"
 
 # Run the time demo and quit as soon as finished
-FLAGS="${FLAGS} +timedemo ${DOTA2_TRACE_FILE} +timedemo_start 80000 +timedemo_end 85000 -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinished; quit\""
+if [ $TRACE == "valve" ]; then
+    DOTA2_TRACE_FILE=2203598540
+    FLAGS="${FLAGS} +timedemo ${DOTA2_TRACE_FILE} +timedemo_start 80000 +timedemo_end 85000 -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinished; quit\""
+else  # PTS trace
+    DOTA2_TRACE_FILE=1971360796
+    FLAGS="${FLAGS} +timedemo ${DOTA2_TRACE_FILE} +timedemo_start 50000 +timedemo_end 51000 -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinished; quit\""
+fi
 
 # Make it work with APITrace
 #FLAGS="${FLAGS} -gl_disable_buffer_storage"
