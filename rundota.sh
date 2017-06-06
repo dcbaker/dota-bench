@@ -41,7 +41,7 @@ else  # PTS trace
 fi
 
 # Make it work with APITrace
-#FLAGS="${FLAGS} -gl_disable_buffer_storage"
+#FLAGS="${FLAGS} -gl_disable_buffer_storage -gl_disable_compressed_texture_pixel_storage"
 
 # Start dota2 and set it to kill on shell exit
 for api in "gl vulkan"; do
