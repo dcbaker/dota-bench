@@ -2,13 +2,11 @@
 # course written in powershell. The one big difference between this script and
 # the bash script is that the trace to run is passed as an argument instead of
 # as an environment variable.
-param([string]benchmark)
+param([string]$benchmark = 'valve')
 
 $DOTA2_DIR = "C:/Program Files (x86)/Steam/steamapps/common/dota 2 beta"
 $DOTA2_BIN = "$DOTA2_DIR/game/bin/win64/dota2.exe"
 $DOTA2_BENCH_CSV = "$DOTA2_DIR/game/dota/Source2Bench.csv"
-
-if (-Not $benchmark) { $benchmark = 'valve' }
 
 if ($benchmark == 'valve') {
     $DOTA2_TRACE_FILE = 2203598540
