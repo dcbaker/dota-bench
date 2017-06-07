@@ -18,7 +18,7 @@ if ($benchmark == 'valve') {
     $END_TIME = 51000
 }
 
-foreach (api in "dx9", "dx10", "gl", "vk") {
+foreach ($api in "dx9", "dx10", "gl", "vk") {
     for ($i = 0; $i < 5; $i++) {
         "$DOATA2_BIN" "-$api" -autoconfig_level 3 +fps_max 0 -fs -w 1920 -h 1080 +cl_showfps 2 +timedemo $DOTA2_TRACE_FILE +timedemo_start $START_TIME +timedemo_end $END_TIME -testscript_inline "Test_WaitForCheckPoint DemoPlaybackFinished; quit"
         Write-Host -nonewline "%api: "
