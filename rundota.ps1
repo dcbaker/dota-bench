@@ -20,7 +20,7 @@ if ($benchmark -eq 'valve') {
 
 foreach ($api in "dx9", "dx10", "gl", "vk") {
     for ($i = 0; $i -lt 5; $i++) {
-        & "$DOTA2_BIN" -$api -autoconfig_level 3 +fps_max 0 -fs -w 1920 -h 1080 +cl_showfps 2 +timedemo $DOTA2_TRACE_FILE +timedemo_start $START_TIME +timedemo_end $END_TIME -testscript_inline "Test_WaitForCheckPoint DemoPlaybackFinished; quit"
+        Start-Process "$DOTA2_BIN" "-$api -autoconfig_level 3 +fps_max 0 -fs -w 1920 -h 1080 +cl_showfps 2 +timedemo $DOTA2_TRACE_FILE +timedemo_start $START_TIME +timedemo_end $END_TIME -testscript_inline `"Test_WaitForCheckPoint DemoPlaybackFinished; quit`"" -Wait
         Write-Host -nonewline "%api: "
         Get-Content $DOTA2_BENCH_CSV -Tail 1 | %{ $_.Split(" ",[StringSplitOptions]"RemoveEmptyEntries")[1].Trim(',') }
     }
