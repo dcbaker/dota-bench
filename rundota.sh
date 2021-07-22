@@ -38,11 +38,16 @@ FLAGS="${FLAGS} +engine_no_focus_sleep 0"
 # Run the time demo and quit as soon as finished
 if [ $TRACE == "valve" ]; then
     DOTA2_TRACE_FILE=2203598540
-    FLAGS="${FLAGS} +timedemo ${DOTA2_TRACE_FILE} +timedemo_start 80000 +timedemo_end 85000 -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinished; quit\""
+    trace_start_time=80000
+    trace_end_time=85000
 else  # PTS trace
     DOTA2_TRACE_FILE=1971360796
-    FLAGS="${FLAGS} +timedemo ${DOTA2_TRACE_FILE} +timedemo_start 50000 +timedemo_end 51000 -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinished; quit\""
+    trace_start_time=50000
+    trace_end_time=51000
 fi
+FLAGS="${FLAGS} +timedemo ${DOTA2_TRACE_FILE}"
+FLAGS="${FLAGS} +timedemo_start ${trace_start_time} +timedemo_end ${trace_end_time}"
+FLAGS="${FLAGS} -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinished; quit\""
 
 demo_file_path="${DOTA2_DIR}/game/dota/${DOTA2_TRACE_FILE}.dem"
 if [ ! -e "$demo_file_path" ]; then
