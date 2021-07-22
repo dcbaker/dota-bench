@@ -54,7 +54,7 @@ fi
 #FLAGS="${FLAGS} -gl_disable_buffer_storage -gl_disable_compressed_texture_pixel_storage"
 
 # Start dota2 and set it to kill on shell exit
-for api in "gl vulkan"; do
+for api in gl vulkan; do
     for _ in `seq 1 5`; do
         "${DOTA2_BIN}" ${FLAGS} "-${api}"
         echo -n "${api}: "
