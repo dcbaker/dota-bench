@@ -17,7 +17,8 @@ export STEAM_RUNTIME=0
 
 # Force the use of two libraries that will either not be installed or will
 # conflict with system installed versions
-export LD_PRELOAD="${HOME}/.steam/ubuntu12_32/steam-runtime/amd64/lib/x86_64-linux-gnu/libudev.so.0 ${HOME}/.steam/ubuntu12_32/steam-runtime/amd64/lib/x86_64-linux-gnu/libpng12.so.0"
+preload_libs_dir="${HOME}/.steam/ubuntu12_32/steam-runtime/amd64/lib/x86_64-linux-gnu"
+export LD_PRELOAD="${preload_libs_dir}/libudev.so.0 ${preload_libs_dir}/libpng12.so.0"
 
 # Set the graphics to high
 FLAGS="${FLAGS} -autoconfig_level 3"
