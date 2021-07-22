@@ -44,6 +44,12 @@ else  # PTS trace
     FLAGS="${FLAGS} +timedemo ${DOTA2_TRACE_FILE} +timedemo_start 50000 +timedemo_end 51000 -testscript_inline \"Test_WaitForCheckPoint DemoPlaybackFinished; quit\""
 fi
 
+demo_file_path="${DOTA2_DIR}/game/dota/${DOTA2_TRACE_FILE}.dem"
+if [ ! -e "$demo_file_path" ]; then
+	echo "demo file '$demo_file_path' not found"
+	exit 1
+fi
+
 # Make it work with APITrace
 #FLAGS="${FLAGS} -gl_disable_buffer_storage -gl_disable_compressed_texture_pixel_storage"
 
