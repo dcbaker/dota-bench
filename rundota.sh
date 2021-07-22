@@ -58,6 +58,6 @@ for api in gl vulkan; do
     for _ in `seq 1 5`; do
         "${DOTA2_BIN}" ${FLAGS} "-${api}"
         echo -n "${api}: "
-        tail -1 "${DOTA2_BENCH_CSV}" | awk '{print $2}' | tr -d ','
+        tail -2 "${DOTA2_BENCH_CSV}" | head -1 | awk '{print $2}' | tr -d ','
     done
 done
