@@ -32,6 +32,9 @@ FLAGS="${FLAGS} -fs -w 1920 -h 1080"
 # Show the framerate
 FLAGS="${FLAGS} +cl_showfps 2"
 
+# Don't run slower if we lose focus: this is a benchmark.
+FLAGS="${FLAGS} +engine_no_focus_sleep 0"
+
 # Run the time demo and quit as soon as finished
 if [ $TRACE == "valve" ]; then
     DOTA2_TRACE_FILE=2203598540
